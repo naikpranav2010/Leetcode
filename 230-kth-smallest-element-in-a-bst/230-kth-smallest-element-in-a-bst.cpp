@@ -14,18 +14,21 @@ public:
     int kthSmallest(TreeNode* root, int k) {
         vector<int> v;
         
-        pop(root, v);
+        pop(root, v, k);
         
         return v[k - 1];
     }
     
-    void pop(TreeNode* root, vector<int> &v){
+    void pop(TreeNode* root, vector<int> &v, int k){
         if(root == NULL)
             return;
         
-        pop(root -> left, v);
+        if(v.size() == k)
+            return;
+        
+        pop(root -> left, v, k);
         v.push_back(root -> val);
-        pop(root -> right, v);
+        pop(root -> right, v, k);
         
         return;
     }
