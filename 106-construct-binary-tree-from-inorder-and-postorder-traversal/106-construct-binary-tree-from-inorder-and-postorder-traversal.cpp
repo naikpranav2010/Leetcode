@@ -14,34 +14,26 @@ public:
     TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
         int i = postorder.size() - 1;
         
-        TreeNode* root = pop(postorder, inorder, i, 0, inorder.size() - 1);
-        
-        return root;
+        return pop(inorder, postorder, i, 0, postorder.size() - 1);
     }
     
-    TreeNode* pop(vector<int>& postorder, vector<int>& inorder, int &i, int first, int end){
-        if(end < first || end < 0 || first >= inorder.size())
+    TreeNode* pop(vector<int>& inorder, vector<int>& postorder, int &i, int first, int last){
+        if(last < first)
             return NULL;
         
-        TreeNode* root = new TreeNode();
-        root -> val = postorder[i--];
-        
-        // if(first == end)
-            // return root;
+        TreeNode* root = new TreeNode(postorder[i--]);
         
         int mid;
         
-        for(int j = first; j <= end; j++){
+        for(int j = first; j <= last; j++){
             if(inorder[j] == root -> val){
                 mid = j;
                 break;
             }
         }
         
-        
-        root -> right = pop(postorder, inorder, i, mid + 1, end);
-        root -> left = pop(postorder, inorder, i, first, mid - 1);
-        // root -> right = pop(postorder, inorder, i, mid + 1, end);
+        root -> right = pop(inorder, postorder, i, mid + 1, last);
+        root -> left = pop(inorder, postorder, i, first, mid - 1);
         
         return root;
     }
