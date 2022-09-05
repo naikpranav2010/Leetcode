@@ -16,16 +16,23 @@ public:
             t += s[j];
             t.erase(0, 1);
             
-            if(umap.find(t) != umap.end()){
-                umap[t]++;
-                if(umap[t] == 2)
-                    ans.push_back(t);
-            }
+//             if(umap.find(t) != umap.end()){
+//                 umap[t]++;
+//                 if(umap[t] == 2)
+//                     ans.push_back(t);
+//             }
             
-            else
-                umap[t] = 1;
+//             else
+//                 umap[t] = 1;
             
+//             j++;
+            umap[t]++;
             j++;
+        }
+        
+        for(auto i : umap){
+            if(i.second > 1)
+                ans.push_back(i.first);
         }
         
         return ans;
