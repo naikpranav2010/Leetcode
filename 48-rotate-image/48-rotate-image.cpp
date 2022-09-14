@@ -13,11 +13,6 @@ public:
                 m[rf - j][ci] = m[rf][cf - j];
                 m[rf][cf - j] = m[ri + j][cf];
                 m[ri + j][cf] = temp;
-                // cout<<m[ri][ci + j]<<endl;
-                // cout<<m[rf - j][ci]<<endl;
-                // cout<<m[rf][cf - j]<<endl;
-                // cout<<m[ri + j][cf]<<endl;
-
             }
         }
         
