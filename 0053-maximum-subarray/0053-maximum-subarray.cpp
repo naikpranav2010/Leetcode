@@ -8,8 +8,7 @@ public:
             
             max_prod = max(max_prod, prod);
             
-            if(prod < 0)
-                prod = 0;
+            prod = max(prod, 0);
             
             i++;
         }
