@@ -14,18 +14,15 @@ public:
             
         
         else if(s[ptr] == '+'){
-            // isnegative++;
             ptr++;
         }
         
         while(ptr < s.size()){
             if(isdigit(s[ptr])){
-                // cout<<"enter"<<endl;
                 if(ans > INT_MAX / 10 || ans == INT_MAX / 10 && s[ptr] - '0' > 7)
                     return isnegative > 0 ? INT_MAX : INT_MIN;
                 
                 ans = ans * 10 + (s[ptr] - '0');
-                // ans = 42;
                 
                 ptr++;
             }
